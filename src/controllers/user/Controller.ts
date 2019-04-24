@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { hash } from 'bcrypt';
 import { NextFunction, Request, Response } from 'express';
 import { configuration } from '../../config';
-import userRepo from '../../repositories/user/UserRepository';
 
 const headers = {
   'Accept' : 'application/json',
