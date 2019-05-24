@@ -8,6 +8,7 @@ events.on("push", () => {
     "echo random stuff",
     "echo Tewatia",
     "more changes",
+    "even more changes",
   ];
 
   job.run();
