@@ -3,7 +3,8 @@ events.on("exec", () => {
   var job = new Job("do-nothing", "alpine:3.8");
   job.tasks = [
     "echo Hello",
-    "echo World"
+    "echo World",
+    "echo Vishal"
   ];
 
   job.run();
