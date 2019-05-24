@@ -4,7 +4,8 @@ events.on("exec", () => {
   job.tasks = [
     "echo Hello",
     "echo World",
-    "echo Vishal"
+    "echo Vishal",
+    "echo random stuff"
   ];
 
   job.run();
