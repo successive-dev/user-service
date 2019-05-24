@@ -5,7 +5,7 @@ events.on("exec", () => {
     "echo Hello",
     "echo World",
     "echo Vishal",
-    "echo random stuff"
+    "echo random stuff",
     "echo Tewatia"
   ];
 
