@@ -6,6 +6,7 @@ events.on("exec", () => {
     "echo World",
     "echo Vishal",
     "echo random stuff"
+    "echo Tewatia"
   ];
 
   job.run();
