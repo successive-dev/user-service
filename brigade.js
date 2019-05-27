@@ -1,6 +1,7 @@
 const { events, Job } = require("brigadier");
 events.on("push", async () => {
-  let j1 = new Job("lint-check", "node");
+  try {
+    let j1 = new Job("lint-check", "node");
   let j2 = new Job("Deploy-job", "docker");
 
   j1.tasks = [
@@ -18,4 +19,7 @@ events.on("push", async () => {
 
   await j1.run();
   await j2.run();
+  } catch (error) {
+    console.log(error.message);
+  }
 });
