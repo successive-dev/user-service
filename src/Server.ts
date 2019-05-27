@@ -31,7 +31,7 @@ export default class Server {
       session({
         resave: true,
         saveUninitialized: false,
-        secret: 'nfdjkwqbufncjwdnxcqfnixvmebquudbvcjnaowdgfuebvjkee'
+        secret: 'nfdjkwqbufncjwdnxcqfnixvmebquudbvcjnaowdgfuebvjkee',
       }),
     );
     this.app.get('/', (_, res) => {

@@ -14,7 +14,7 @@
 // export { oidc };
 // import { configuration } from '../config';
 
-import { NextFunction, Response, } from 'express';
+import { NextFunction, Response } from 'express';
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 
 const oktaJwtVerifier = new OktaJwtVerifier({

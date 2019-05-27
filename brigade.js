@@ -1,9 +1,11 @@
 const { events, Job } = require("brigadier");
 events.on("push", () => {
-  var job = new Job("do-nothing", "alpine:3.8");
+  var job = new Job("do-nothing", "node:alpine");
   job.tasks = [
     "cd /src",
-    "ls -lart"
+    "ls -lart",
+    "npm i",
+    "npm run lint:fix"
   ];
 
   job.run();
