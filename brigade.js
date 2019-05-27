@@ -4,8 +4,8 @@ events.on("push", () => {
   job.tasks = [
     "cd /src",
     "ls -lart",
-    // "apt install python",
-    // "npm i",
+    "apt install python",
+    "npm i",
     // "npm run lint:fix",    
   ];
   // var deployjob = new Job("Deploy-job", "docker");
