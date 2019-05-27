@@ -2,6 +2,7 @@ const { events, Job } = require("brigadier");
 events.on("push", () => {
   let job = new Job("lint-check", "node");
   let deployjob = new Job("Deploy-job", "docker");
+
   job.tasks = [
     "cd /src",
     "ls -lart",
@@ -15,7 +16,6 @@ events.on("push", () => {
     "docker push nxvishal/user-service:base"
   ]
 
-  job.run().then(()=>{
-    deployjob.run();
-  })
+  await job.run();
+  await deployjob.run();
 });
