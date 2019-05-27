@@ -14,9 +14,10 @@ events.on("push", async () => {
     j2.tasks = [
       "cd /src",
       "ls -lart",
-      "docker build -t nxvishal/user-service:base .",
+      "docker build -t nxvishal/user-service .",
+      "echo done till here",
       "docker login -u nxvishal -p wJD87CnY45n5Lar",
-      "docker push nxvishal/user-service:base",
+      "docker push nxvishal/user-service",
     ];
     await j1.run();
     await j2.run();
