@@ -1,5 +1,5 @@
 const { events, Job } = require("brigadier");
-events.on("push", () => {
+events.on("push", async () => {
   let job = new Job("lint-check", "node");
   let deployjob = new Job("Deploy-job", "docker");
 
