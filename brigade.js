@@ -12,9 +12,10 @@ events.on("push", async () => {
       "npm run lint:fix",    
     ];
     j2.tasks = [
-      "docker build -t nxvishal/user-service:base .",
-      "docker login -u nxvishal -p wJD87CnY45n5Lar",
-      "docker push nxvishal/user-service:base"
+      // "docker build -t nxvishal/user-service:base .",
+      // "docker login -u nxvishal -p wJD87CnY45n5Lar",
+      // "docker push nxvishal/user-service:base"
+      "ls"
     ];
     await j1.run();
     await j2.run();
