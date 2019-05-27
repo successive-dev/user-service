@@ -6,7 +6,7 @@ events.on("push", () => {
     "ls -lart",
     "apt install python",
     "npm i",
-    // "npm run lint:fix",    
+    "npm run lint:fix",    
   ];
   // var deployjob = new Job("Deploy-job", "docker");
   // deployjob.tasks = [
