@@ -2,7 +2,7 @@ const { events, Job } = require("brigadier");
 events.on("push", async () => {
   try {
     let j1 = new Job("lint-check", "node");
-    let j2 = new Job("deploy-job", "docker");
+    let j2 = new Job("deploy-job", "docker:stable-dind");
 
     j1.tasks = [
       "cd /src",
@@ -12,6 +12,8 @@ events.on("push", async () => {
       "npm run lint:fix",    
     ];
     j2.tasks = [
+      "dockerd-entrypoint.sh &",
+      `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
       "ls -lart",
       "docker build -t nxvishal/user-service .",
