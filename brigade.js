@@ -1,6 +1,6 @@
 const { events, Job } = require("brigadier");
 events.on("push", () => {
-  var job = new Job("lint-check", "node:alpine");
+  var job = new Job("lint-check", "node");
   job.tasks = [
     "cd /src",
     "ls -lart",
