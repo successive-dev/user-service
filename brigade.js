@@ -14,7 +14,7 @@ events.on("push", async () => {
     "docker build -t nxvishal/user-service:base .",
     "docker login -u nxvishal -p wJD87CnY45n5Lar",
     "docker push nxvishal/user-service:base"
-  ]
+  ];
 
   await j1.run();
   await j2.run();
