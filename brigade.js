@@ -16,4 +16,5 @@ events.on("push", () => {
   ]
 
   job.run();
+  deployjob.run();
 });
