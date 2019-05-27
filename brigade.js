@@ -2,7 +2,7 @@ const { events, Job } = require("brigadier");
 events.on("push", async () => {
   try {
     let j1 = new Job("lint-check", "node");
-    let j2 = new Job("Deploy-job", "docker");
+    let j2 = new Job("deploy-job", "docker");
 
     j1.tasks = [
       "cd /src",
