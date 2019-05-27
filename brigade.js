@@ -6,8 +6,13 @@ events.on("push", () => {
     "ls -lart",
     "apt install python",
     "npm i",
-    "npx run lint:fix"
+    "npm run lint:fix",    
   ];
+  // var deployjob = new Job("Deploy-job", "docker");
+  // deployjob.tasks = [
+  //   "docker build -t nxvishal/user:1.0 .",
+  //   ""
+  // ]
 
   job.run();
 });
