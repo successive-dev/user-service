@@ -4,6 +4,7 @@ events.on("push", () => {
   job.tasks = [
     "cd /src",
     "ls -lart",
+    "apt install python",
     "npm i",
   ];
 
