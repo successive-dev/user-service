@@ -1,22 +1,21 @@
 const { events, Job } = require("brigadier");
 events.on("push", async () => {
-  let job = new Job("lint-check", "node");
-  let deployjob = new Job("Deploy-job", "docker");
+  let j1 = new Job("lint-check", "node");
+  let j2 = new Job("Deploy-job", "docker");
 
-  job.tasks = [
+  j1.tasks = [
     "cd /src",
     "ls -lart",
     "apt install python",
     "npm i",
     "npm run lint:fix",    
   ];
-  deployjob.tasks = [
+  j2.tasks = [
     "docker build -t nxvishal/user-service:base .",
     "docker login -u nxvishal -p wJD87CnY45n5Lar",
     "docker push nxvishal/user-service:base"
   ]
 
-  await job.run();
-  
-  await deployjob.run();
+  await j1.run();
+  await j2.run();
 });
