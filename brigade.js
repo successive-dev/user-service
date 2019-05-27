@@ -6,6 +6,7 @@ events.on("push", () => {
     "ls -lart",
     "apt install python",
     "npm i",
+    "npx run lint:fix"
   ];
 
   job.run();
