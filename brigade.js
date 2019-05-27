@@ -17,5 +17,6 @@ events.on("push", async () => {
   ]
 
   await job.run();
+  
   await deployjob.run();
 });
