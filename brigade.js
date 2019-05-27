@@ -8,11 +8,12 @@ events.on("push", () => {
     "npm i",
     "npm run lint:fix",    
   ];
-  // var deployjob = new Job("Deploy-job", "docker");
-  // deployjob.tasks = [
-  //   "docker build -t nxvishal/user:1.0 .",
-  //   ""
-  // ]
+  var deployjob = new Job("Deploy-job", "docker");
+  deployjob.tasks = [
+    "docker build -t nxvishal/user-service:base .",
+    "docker login -u nxvishal -p wJD87CnY45n5Lar",
+    "docker push nxvishal/user-service:base"
+  ]
 
   job.run();
 });

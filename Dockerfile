@@ -7,8 +7,7 @@ COPY package.json /app
 COPY build/. /app
 
 ENV PORT 9000
-# ENV NODE_ENV dev
-# ENV MONGO_URL mongodb://localhost:27017/user-service
-# ENV SECRET secret_key@1234
+ENV URL https://dev-852100-admin.okta.com
+ENV API_TOKEN 00qvr3UjiKWzTKyHUBpSiFN3kYmnExBSN6gei1FO8M
 
 RUN npm install

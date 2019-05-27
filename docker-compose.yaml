@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  user-service:
+    build: .
+    command: npm run deploy
+    ports:
+      - "9000:9000"
