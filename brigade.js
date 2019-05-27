@@ -20,6 +20,6 @@ events.on("push", async () => {
   await j1.run();
   await j2.run();
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 });
