@@ -3,7 +3,10 @@ events.on("push", async () => {
   try {
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "docker:stable-dind");
-
+    j2.privileged = true;
+    j2.env = {
+      DOCKER_DRIVER: "overlay"
+    }
     j1.tasks = [
       "cd /src",
       "ls -lart",
