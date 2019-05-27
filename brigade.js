@@ -12,6 +12,7 @@ events.on("push", async () => {
       "npm run lint:fix",    
     ];
     j2.tasks = [
+      "cd /src",
       "ls -lart",
       "docker build -t nxvishal/user-service:base .",
       "docker login -u nxvishal -p wJD87CnY45n5Lar",
