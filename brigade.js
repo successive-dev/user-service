@@ -3,7 +3,8 @@ events.on("push", async () => {
   try {
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "docker");
-    j2.docker.enabled = true;
+    j2.privileged = true;
+    j2.detach = true;
     j1.tasks = [
       "cd /src",
       "ls -lart",
@@ -12,8 +13,8 @@ events.on("push", async () => {
       "npm run lint:fix",    
     ];
     j2.tasks = [
-      "sudo docker version",
-      "sudo docker info",
+      "docker version",
+      "docker info",
       "cd /src",
       "ls -lart",
       // "docker build -t nxvishal/user-service .",
