@@ -4,7 +4,9 @@ events.on("push", async () => {
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "docker");
     j2.privileged = true;
-    j2.detach = true;
+    j2.env = {
+      DOCKER_DRIVER: "overlay"
+    }
     j1.tasks = [
       "cd /src",
       "ls -lart",
@@ -13,6 +15,8 @@ events.on("push", async () => {
       "npm run lint:fix",    
     ];
     j2.tasks = [
+      "dockerd-entrypoint.sh &",
+      `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "docker version",
       "docker info",
       "cd /src",
