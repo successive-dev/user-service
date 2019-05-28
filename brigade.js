@@ -15,7 +15,7 @@ events.on("push", async () => {
       "docker version",
       "cd /src",
       "ls -lart",
-      "docker build -t nxvishal/user-service .",
+      // "docker build -t nxvishal/user-service .",
       // "echo done till here",
       // "docker login -u nxvishal -p wJD87CnY45n5Lar",
       // "docker push nxvishal/user-service",
