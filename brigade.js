@@ -2,7 +2,7 @@ const { events, Job } = require("brigadier");
 events.on("push", async () => {
   try {
     let j1 = new Job("lint-check", "node");
-    let j2 = new Job("deploy-job", "docker:stable-dind");
+    let j2 = new Job("deploy-job", "docker:dind");
     j2.privileged = true;
     j2.env = {
       DOCKER_DRIVER: "overlay"
@@ -16,7 +16,8 @@ events.on("push", async () => {
     ];
     j2.tasks = [
       "dockerd-entrypoint.sh &",
-      `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
+      // `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
+      "sleep 20",
       "docker version",
       "docker info",
       "cd /src",
