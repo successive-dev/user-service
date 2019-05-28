@@ -27,8 +27,8 @@ events.on("push", async () => {
       // "docker login -u nxvishal -p wJD87CnY45n5Lar",
       // "docker push nxvishal/user-service",
     ];
-    await j1.run();
-    await j2.run();
+    // await j1.run();
+     j2.run();
   } catch (error) {
     console.log(error.message);
     console.log(error.lineNumber);
