@@ -17,7 +17,8 @@ dockerBuild.tasks = [
 // "dockerd-entrypoint.sh &", // Start the docker daemon
 "sleep 20", // Grant it enough time to be up and running
 "cd /src/", // Go to the project checkout dir
-"ls -lart"
+"ls -lart",
+"docker version"
 ]
 
 dockerBuild.run()
