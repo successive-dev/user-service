@@ -15,7 +15,7 @@ events.on("push", async () => {
       "npm run lint:fix",    
     ];
     j2.tasks = [
-      "dockerd-entrypoint.sh &",
+      // "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "docker version",
       "docker info",
