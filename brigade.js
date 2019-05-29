@@ -46,18 +46,18 @@ events.on("push", async () => {
     ];
     j2.tasks = [
       "dockerd-entrypoint.sh &",
-      // `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
-      "sleep 20",
+      `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
+    //   "sleep 20",
       "docker version",
       "docker info",
       "cd /src",
       "ls -lart",
-      // "docker build -t nxvishal/user-service .",
-      // "echo done till here",
-      // "docker login -u nxvishal -p wJD87CnY45n5Lar",
-      // "docker push nxvishal/user-service",
+      "docker build -t nxvishal/user-service .",
+      "echo done till here",
+      "docker login -u nxvishal -p wJD87CnY45n5Lar",
+      "docker push nxvishal/user-service",
     ];
-    // await j1.run();
+    await j1.run();
      j2.run();
   } catch (error) {
     console.log(error.message);
