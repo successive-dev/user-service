@@ -3,7 +3,7 @@ const { events, Job } = require("brigadier");
 
 events.on("push", () => {
 // Create a new job
-var dockerBuild = new Job("dockerbuild")
+var dockerBuild = new Job("docker-build")
 
 dockerBuild.image = "docker:dind"
 dockerBuild.privileged = true;
