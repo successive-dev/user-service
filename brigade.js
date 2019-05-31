@@ -54,10 +54,13 @@ events.on("push", async () => {
     //   "ls -lart",
       "gcloud auth activate-service-account --key-file lofty-flare-241313-0bc75b09502a.json",
       "gcloud config set project lofty-flare-241313",
-      "docker build -t nxvishal/user-service .",
+      "gcloud config list",
+      "docker build -t user-service .",
+      "docker tag user-service gcr.io/lofty-flare-241313/user-service",
       "echo done till here",
-      "docker login -u nxvishal -p wJD87CnY45n5Lar",
-      "docker push nxvishal/user-service",
+      "docker push gcr.io/lofty-flare-241313/user-service"
+      // "docker login -u nxvishal -p wJD87CnY45n5Lar",
+      // "docker push nxvishal/user-service",
     ];
     await j1.run();
     await  j2.run();
