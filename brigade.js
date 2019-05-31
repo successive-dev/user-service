@@ -49,7 +49,7 @@ events.on("push", async () => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
     //   "sleep 20",
       "docker version",
-      "gcloud",
+      // "gcloud",
       "cd /src",
     //   "ls -lart",
       "gcloud auth activate-service-account --key-file lofty-flare-241313-0bc75b09502a.json",
