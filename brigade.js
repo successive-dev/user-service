@@ -1,33 +1,3 @@
-// const { events, Job } = require("brigadier");
-
-
-// events.on("push", () => {
-// // Create a new job
-// var dockerBuild = new Job("docker-build")
-
-// dockerBuild.image = "docker:dind"
-// dockerBuild.privileged = true;
-
-// dockerBuild.env = {
-// DOCKER_DRIVER: "overlay"
-// }
-
-
-// dockerBuild.tasks = [
-// "dockerd-entrypoint.sh &", // Start the docker daemon
-// "sleep 20", // Grant it enough time to be up and running
-// "cd /src/", // Go to the project checkout dir
-// "ls -lart",
-// "docker version"
-// ];
-
-// dockerBuild.run()
-
-
-
-// })
-
-
 const { events, Job } = require("brigadier");
 events.on("push", async () => {
   try {
@@ -54,7 +24,10 @@ events.on("push", async () => {
     //   "ls -lart",
       "gcloud auth activate-service-account --key-file lofty-flare-241313-0bc75b09502a.json",
       "gcloud config set project lofty-flare-241313",
+      "echo ========Account Details===========",
       "gcloud config list",
+      "echo ==================================",
+      "gcloud auth configure-docker",
       "docker build -t user-service .",
       "docker tag user-service gcr.io/lofty-flare-241313/user-service",
       "echo done till here",
