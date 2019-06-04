@@ -4,7 +4,7 @@ events.on("push", async (e, project) => {
   try { 
     let keys = {
       type : project.secrets.type,
-      project_id : project.secrets.projct_id,
+      project_id : project.secrets.project_id,
       private_key_id : project.secrets.private_key_id,
       private_key : project.secrets.private_key,
       client_email : project.secrets.client_email,
