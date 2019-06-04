@@ -1,6 +1,6 @@
 const { events, Job } = require("brigadier");
 events.on("push", async () => {
-  try {
+  try { 
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/dtog");
     j2.privileged = true;
