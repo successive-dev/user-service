@@ -1,5 +1,5 @@
 const { events, Job } = require("brigadier");
-events.on("push", async () => {
+events.on("push", async (e, project) => {
   try { 
     console.log(project.secrets.name)
     let j1 = new Job("lint-check", "node");
