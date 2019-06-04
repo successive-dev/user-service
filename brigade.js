@@ -20,7 +20,7 @@ events.on("push", async (e, project) => {
     j2.privileged = true;
     j2.env = { 
       DOCKER_DRIVER: "overlay",
-      // KEYS: keys,
+      "KEYS": keys,
     }
     j1.tasks = [
       "cd /src",
