@@ -52,7 +52,7 @@ events.on("push", async (e, project) => {
       // "docker push nxvishal/user-service",
     ];
     // await j1.run();
-    // await  j2.run();
+    await  j2.run();
   } catch (error) {
     console.log(error.message);
     console.log(error.lineNumber);
