@@ -19,7 +19,7 @@ events.on("push", async (e, project) => {
     let j2 = new Job("deploy-job", "nxvishal/dtog");
     j2.privileged = true;
     j2.env = { 
-      DOCKER_DRIVER: "overlay",
+      // DOCKER_DRIVER: "overlay",
       "KEYS": keys,
     }
     j1.tasks = [
