@@ -1,18 +1,19 @@
 const { events, Job } = require("brigadier");
 events.on("push", async () => {
   try { 
+    console.log(project.secrets.key)
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/dtog");
     j2.privileged = true;
-    j2.env = {
+    j2.env = { 
       DOCKER_DRIVER: "overlay"
     }
     j1.tasks = [
       "cd /src",
       // "ls -lart",
-      "apt install python",
-      "npm i",
-      "npm run lint:fix",    
+      // "apt install python",
+      // "npm i",
+      // "npm run lint:fix",    
     ];
     j2.tasks = [
       "dockerd-entrypoint.sh &",
