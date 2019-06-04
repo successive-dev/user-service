@@ -21,7 +21,7 @@ events.on("push", async () => {
       "docker version",
       // "gcloud",
       "cd /src",
-    //   "ls -lart",
+      "ls -lart",
       "gcloud auth activate-service-account --key-file lofty-flare-241313-0bc75b09502a.json",
       "gcloud config set project lofty-flare-241313",
       "echo ========Account Details===========",
