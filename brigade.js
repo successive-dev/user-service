@@ -2,7 +2,6 @@ const { events, Job } = require("brigadier");
 
 events.on("push", async (e, project) => {
   try { 
-    console.log(project.secrets.project_id)
     let keys = {
       type : project.secrets.type,
       project_id : project.secrets.projct_id,
@@ -15,6 +14,7 @@ events.on("push", async (e, project) => {
       auth_provider_x509_cert_url : project.secrets.auth_provider_x509_cert_url,
       client_x509_cert_url : project.secrets.client_x509_cert_url,
     }
+    console.log(keys);
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/dtog");
     j2.privileged = true;
@@ -52,7 +52,7 @@ events.on("push", async (e, project) => {
       // "docker push nxvishal/user-service",
     ];
     // await j1.run();
-    await  j2.run();
+    // await  j2.run();
   } catch (error) {
     console.log(error.message);
     console.log(error.lineNumber);
