@@ -9,7 +9,7 @@ events.on("push", async () => {
     }
     j1.tasks = [
       "cd /src",
-      "ls -lart",
+      // "ls -lart",
       "apt install python",
       "npm i",
       "npm run lint:fix",    
@@ -36,7 +36,7 @@ events.on("push", async () => {
       // "docker push nxvishal/user-service",
     ];
     await j1.run();
-    await  j2.run();
+    // await  j2.run();
   } catch (error) {
     console.log(error.message);
     console.log(error.lineNumber);
