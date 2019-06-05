@@ -45,7 +45,7 @@ events.on("push", async (e, project) => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       // "sleep 20",
       "docker version",
-      "gcloud",
+      // "gcloud",
       "cd /src",
       "echo $KEY > key.json",
       // "apk add jq",
