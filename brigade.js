@@ -48,7 +48,7 @@ events.on("push", async (e, project) => {
       // "gcloud",
       "cd /src",
       // "echo $KEYS > key.json",
-      "env",
+      "echo $KEY",
       // 'cat<<EOF > json2.json {
       // "USER":"$USER",
       // "GPG_AGENT_INFO":"$GPG_AGENT_INFO",
