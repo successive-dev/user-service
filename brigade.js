@@ -50,7 +50,7 @@ events.on("push", async (e, project) => {
       "echo $KEY > key.json",
       // "apk add jq",
       // "jq $KEY < key.json",
-      "ls -lart | grep key",
+      // "ls -lart | grep key",
       "gcloud auth activate-service-account --key-file key.json",
       "gcloud config set project inner-catfish-242312",
       "echo ========Account Details===========",
