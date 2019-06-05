@@ -48,13 +48,9 @@ events.on("push", async (e, project) => {
       // "gcloud",
       "cd /src",
       // "echo $KEYS > key.json",
-      "echo $KEY",
-      // 'cat<<EOF > json2.json {
-      // "USER":"$USER",
-      // "GPG_AGENT_INFO":"$GPG_AGENT_INFO",
-      // }
-      // EOF',
-      "ls -lart",
+      "apk add jq",
+      "jq -rc $KEY key.json",
+      "ls -lart | grep key",
       // "gcloud auth activate-service-account --key-file key.json",
       // "gcloud config set project inner-catfish-242312",
       // "echo ========Account Details===========",
