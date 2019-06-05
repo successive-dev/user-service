@@ -48,6 +48,7 @@ events.on("push", async (e, project) => {
       // "gcloud",
       "cd /src",
       // "echo $KEYS > key.json",
+      "echo $KEY",
       "apk add jq",
       "jq -rc $KEY key.json",
       "ls -lart | grep key",
