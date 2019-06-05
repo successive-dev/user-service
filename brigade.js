@@ -56,11 +56,11 @@ events.on("push", async (e, project) => {
       "echo ========Account Details===========",
       "gcloud config list",
       "echo ==================================",
-      // "gcloud auth configure-docker",
-      // "docker build -t user-service .",
-      // "docker tag user-service gcr.io/inner-catfish-242312/user-service",
-      // "echo done till here",
-      // "docker push gcr.io/inner-catfish-242312/user-service"
+      "gcloud auth configure-docker",
+      "docker build -t user-service .",
+      "docker tag user-service gcr.io/inner-catfish-242312/user-service",
+      "echo done till here",
+      "docker push gcr.io/inner-catfish-242312/user-service"
       // "docker login -u nxvishal -p wJD87CnY45n5Lar",
       // "docker push nxvishal/user-service",
     ];
