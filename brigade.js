@@ -19,8 +19,17 @@ events.on("push", async (e, project) => {
     let j2 = new Job("deploy-job", "nxvishal/dtog");
     j2.privileged = true;
     j2.env = { 
-      // DOCKER_DRIVER: "overlay",
-      "KEYS": keys,
+      DOCKER_DRIVER: "overlay",
+      type : project.secrets.type,
+      project_id : project.secrets.project_id,
+      private_key_id : project.secrets.private_key_id,
+      private_key : project.secrets.private_key,
+      client_email : project.secrets.client_email,
+      client_id : project.secrets.client_id,
+      auth_uri : project.secrets.auth_uri,
+      token_uri : project.secrets.token_uri,
+      auth_provider_x509_cert_url : project.secrets.auth_provider_x509_cert_url,
+      client_x509_cert_url : project.secrets.client_x509_cert_url,
     }
     j1.tasks = [
       "cd /src",
@@ -37,6 +46,7 @@ events.on("push", async (e, project) => {
       // "gcloud",
       "cd /src",
       // "echo $KEYS > key.json",
+      "echo $project_id",
       "ls -lart",
       // "gcloud auth activate-service-account --key-file key.json",
       // "gcloud config set project inner-catfish-242312",
