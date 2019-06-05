@@ -46,7 +46,7 @@ events.on("push", async (e, project) => {
       // "gcloud",
       "cd /src",
       // "echo $KEYS > key.json",
-      "echo $project_id",
+      "env",
       "ls -lart",
       // "gcloud auth activate-service-account --key-file key.json",
       // "gcloud config set project inner-catfish-242312",
