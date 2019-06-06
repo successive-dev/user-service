@@ -35,6 +35,7 @@ events.on("push", async (e, project) => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "docker version",
       "cd /src",
+      "echo $KEY",
       "echo $KEY > key.json",
       "ls -lart | grep key",
       "gcloud auth activate-service-account --key-file key.json",
