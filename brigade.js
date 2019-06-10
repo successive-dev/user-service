@@ -33,10 +33,10 @@ events.on("push", async (e, project) => {
     j2.tasks = [
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
-      "docker version",
-      // "echo `git tag`",
-      "git verson",
+      // "docker version",
+      "git version",
       "cd /src",
+      "echo `git tag`",
       // "echo $KEY",
       "echo $KEY > key.json",
       "ls -lart",
@@ -45,15 +45,15 @@ events.on("push", async (e, project) => {
       "echo ========Account Details===========",
       "gcloud config list",
       "echo ==================================",
-      "gcloud auth configure-docker",
-      "rm key.json",
-      "docker build -t user-service .",
-      "docker tag user-service gcr.io/inner-catfish-242312/user-service",
-      "echo done till here",
-      "docker push gcr.io/inner-catfish-242312/user-service",
-      "",
+      // "gcloud auth configure-docker",
+      // "rm key.json",
+      // "docker build -t user-service .",
+      // "docker tag user-service gcr.io/inner-catfish-242312/user-service",
+      // "echo done till here",
+      // "docker push gcr.io/inner-catfish-242312/user-service",
+      // "",
     ];
-    await j1.run();
+    // await j1.run();
     await  j2.run();
   } catch (error) {
     console.log(error.message);
