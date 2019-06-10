@@ -37,7 +37,7 @@ events.on("push", async (e, project) => {
       "git version",
       "cd /src",
       // "echo `git tag`",
-      // "git fetch --tags -q",
+      "git fetch --tags -q",
       "wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
       "chmod u+x ./gitversion",
       "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
