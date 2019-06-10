@@ -45,7 +45,7 @@ events.on("push", async (e, project) => {
       "ls -lart",
       "echo git remotes ==================================",
       "git remote -v",
-      "git push origin --tags",
+      // "git push origin --tags",
       // "echo $KEY",
       "echo $version",
       "echo $KEY > key.json",
