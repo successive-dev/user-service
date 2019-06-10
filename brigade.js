@@ -18,7 +18,7 @@ events.on("push", async (e, project) => {
     console.log(keys);
     const keys_stringified = JSON.stringify(keys);
     let j1 = new Job("lint-check", "node");
-    let j2 = new Job("deploy-job", "nxvishal/dtog");
+    let j2 = new Job("deploy-job", "nxvishal/gdh");
     j2.privileged = true;
     j2.env = { 
       DOCKER_DRIVER: "overlay",
@@ -34,10 +34,11 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "docker version",
+      "echo `git tag`",
       "cd /src",
-      "echo $KEY",
+      // "echo $KEY",
       "echo $KEY > key.json",
-      "ls -lart | grep key",
+      // "ls -lart | grep key",
       "gcloud auth activate-service-account --key-file key.json",
       "gcloud config set project inner-catfish-242312",
       "echo ========Account Details===========",
@@ -48,7 +49,8 @@ events.on("push", async (e, project) => {
       "docker build -t user-service .",
       "docker tag user-service gcr.io/inner-catfish-242312/user-service",
       "echo done till here",
-      "docker push gcr.io/inner-catfish-242312/user-service"
+      "docker push gcr.io/inner-catfish-242312/user-service",
+      "",
     ];
     await j1.run();
     await  j2.run();
