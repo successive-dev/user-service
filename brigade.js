@@ -43,6 +43,7 @@ events.on("push", async (e, project) => {
       "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
       "version=$(cat pipeline_app_version.txt)",
       "ls -lart",
+      "git remote add origin https://github.com/successive-dev/user-service",
       "git config --local user.name 'successive-dev'",
       "git config --local user.password 'Vishal@123#'",
       "echo git remotes ==================================",
