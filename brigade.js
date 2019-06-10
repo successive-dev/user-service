@@ -43,6 +43,7 @@ events.on("push", async (e, project) => {
       "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
       "version=$(cat pipeline_app_version.txt)",
       "ls -lart",
+      "git remote -v",
       "git push origin --tags",
       // "echo $KEY",
       "echo $version",
