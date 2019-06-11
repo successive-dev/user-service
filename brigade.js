@@ -57,7 +57,7 @@ events.on("push", async (e, project) => {
       "echo done till here",
       // "docker push gcr.io/inner-catfish-242312/user-service:$version",
       // "helm init --history-max 200",
-      "helm ls",
+      "helm ls"
     ];
     if(e.type == 'push'){
       if(jsonPayload.ref == "refs/heads/master") {
