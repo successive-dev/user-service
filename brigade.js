@@ -56,6 +56,7 @@ events.on("push", async (e, project) => {
       // "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       "echo done till here",
       // "docker push gcr.io/inner-catfish-242312/user-service:$version",
+      "helm init --history-max 200",
       "helm ls",
     ];
     if(e.type == 'push'){
