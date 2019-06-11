@@ -49,7 +49,7 @@ events.on("push", async (e, project) => {
       "git remote add origin https://github.com/successive-dev/user-service",
       "echo git remotes ==================================",
       "echo `git remote -v`",
-      "git push origin --tags << 'Vishal@123#'",
+      "echo 'Vishal@123#' | git push origin --tags",
       // "echo $KEY",
       "echo $version",
       // "echo $KEY > key.json",
