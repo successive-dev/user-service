@@ -3,6 +3,7 @@ const { events, Job } = require("brigadier");
 
 events.on("push", async (e, project) => {
   try {
+    var jsonPayload = JSON.parse(e.payload);
     const keys = {
       type : project.secrets.type,
       project_id : project.secrets.project_id,
