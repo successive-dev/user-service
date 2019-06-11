@@ -17,19 +17,19 @@ events.on("push", async (e, project) => {
     }
     console.log(keys);
     const keys_stringified = JSON.stringify(keys);
-    let j1 = new Job("lint-check", "node");
+    // let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/gdh");
     j2.privileged = true;
     j2.env = { 
       DOCKER_DRIVER: "overlay",
       KEY: keys_stringified,
     }
-    j1.tasks = [
-      "cd /src",
-      "apt install python",
-      "npm i",
-      "npm run lint:fix",    
-    ];
+    // j1.tasks = [
+    //   "cd /src",
+    //   "apt install python",
+    //   "npm i",
+    //   "npm run lint:fix",    
+    // ];
     j2.tasks = [
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
@@ -65,7 +65,7 @@ events.on("push", async (e, project) => {
       "echo done till here",
       "docker push gcr.io/inner-catfish-242312/user-service:$version",
     ];
-    await j1.run();
+    // await j1.run();
     await j2.run();
   } catch (error) {
     console.log(error.message);
