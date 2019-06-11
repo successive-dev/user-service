@@ -45,6 +45,7 @@ events.on("push", async (e, project) => {
       "ls -lart",
       "git config --global credential.helper 'store --file ~/.git-credentials'",
       'echo https://successive-dev:Vishal@123#@github.com > ~/.git-credentials',
+      "git remote add origin https://github.com/successive-dev/user-service",
       "echo git remotes ==================================",
       "echo `git remote -v`",
       "git push origin --tags",
