@@ -2,7 +2,7 @@ const { events, Job } = require("brigadier");
 
 
 events.on("push", async (e, project) => {
-  if(jsonPayload.ref == "refs/heads/develop") {
+  if(jsonPayload.ref == "refs/heads/master") {
     try { 
       const keys = {
         type : project.secrets.type,
