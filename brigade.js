@@ -65,7 +65,7 @@ events.on("push", async (e, project) => {
       "echo done till here",
       "docker push gcr.io/inner-catfish-242312/user-service:$version",
     ];
-    // await j1.run();
+    await j1.run();
     await  j2.run();
   } catch (error) {
     console.log(error.message);
