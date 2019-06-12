@@ -32,35 +32,52 @@ events.on("push", async (e, project) => {
     //   "npm run lint:fix",    
     // ];
     j2.tasks = [
+
+      // init
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
+
+      // get version of repo
       "git fetch --tags -q",
       "wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
       "chmod u+x ./gitversion",
       "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
       "version=$(cat pipeline_app_version.txt)",
+
+      // git authentication
       'echo https://successive-dev:uzL623NGxG2Nz9z@github.com > .git-credentials',
       "git config credential.helper 'store --file .git-credentials'",
+
+      // push tags
       "git remote add origin https://github.com/successive-dev/user-service",
       "git push origin --tags",
+
+      // create key.json and google auth
       "echo $KEY > key.json",
       "gcloud auth activate-service-account --key-file key.json",
       "gcloud config set project inner-catfish-242312",
       "echo ========Account Details===========",
       "gcloud config list",
       "echo ==================================",
-      "gcloud auth configure-docker",
+
+      // remove key
       "rm key.json",
+
+      // generating build
       "apk add npm",
       "npm install",
       "npm i nodemon",
-      "npm build",
+      "npm run build",
+
+      // generating, tagging and pushing the image
+      "gcloud auth configure-docker",
       "docker build -t user-service .",
       "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       "echo done till here",
       "docker push gcr.io/inner-catfish-242312/user-service:$version",
-      // "helm init --history-max 200",
+
+      // updating helm chart with latest version of build image
       "helm init --client-only",
       "helm ls",
       "helm repo add usc https://successive-dev.github.io/usc/",
