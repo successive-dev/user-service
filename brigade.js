@@ -51,6 +51,7 @@ events.on("push", async (e, project) => {
       "gcloud config list",
       "echo ==================================",
       "gcloud auth configure-docker",
+      "apk add npm",
       "rm key.json",
       "npm start",
       "docker build -t user-service .",
