@@ -52,6 +52,7 @@ events.on("push", async (e, project) => {
       "echo ==================================",
       "gcloud auth configure-docker",
       "rm key.json",
+      "npm start",
       "docker build -t user-service .",
       "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       "echo done till here",
