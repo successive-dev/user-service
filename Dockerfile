@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:current-alpine
 
 WORKDIR /app
 
@@ -12,4 +12,4 @@ ENV API_TOKEN 00qvr3UjiKWzTKyHUBpSiFN3kYmnExBSN6gei1FO8M
 # RUN apk add python2
 RUN npm install
 
-CMD [ "npm run deploy" ]
+CMD [ "npm", "run", "deploy" ]
