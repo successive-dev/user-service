@@ -52,13 +52,14 @@ events.on("push", async (e, project) => {
       "echo ==================================",
       "gcloud auth configure-docker",
       "rm key.json",
-      // "docker build -t user-service .",
-      // "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
+      "docker build -t user-service .",
+      "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       "echo done till here",
-      // "docker push gcr.io/inner-catfish-242312/user-service:$version",
+      "docker push gcr.io/inner-catfish-242312/user-service:$version",
       // "helm init --history-max 200",
       "helm ls",
-      
+      "helm repo add usc https://successive-dev.github.io/usc/",
+      "helm upgrade --set image.tag=$version usc usc/user-service",  
     ];
     if(e.type == 'push'){
       if(jsonPayload.ref == "refs/heads/master") {
