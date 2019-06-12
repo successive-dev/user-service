@@ -58,6 +58,7 @@ events.on("push", async (e, project) => {
       "echo done till here",
       "docker push gcr.io/inner-catfish-242312/user-service:$version",
       // "helm init --history-max 200",
+      "helm init --client-only",
       "helm ls",
       "helm repo add usc https://successive-dev.github.io/usc/",
       "helm upgrade --set image.tag=$version usc usc/user-service",   
