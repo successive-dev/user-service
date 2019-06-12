@@ -19,7 +19,7 @@ events.on("push", async (e, project) => {
     console.log(keys);
     const keys_stringified = JSON.stringify(keys);
     // let j1 = new Job("lint-check", "node");
-    let j2 = new Job("deploy-job", "nxvishal/gdh");
+    let j2 = new Job("deploy-job", "nxvishal/platform");
     j2.privileged = true;
     j2.env = { 
       DOCKER_DRIVER: "overlay",
@@ -52,7 +52,7 @@ events.on("push", async (e, project) => {
       "echo ==================================",
       "gcloud auth configure-docker",
       "rm key.json",
-      // "npm start",
+      "npm start",
       "docker build -t user-service .",
       "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       "echo done till here",
