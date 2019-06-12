@@ -1,4 +1,4 @@
-FROM node:latest-alpine
+FROM node:current-alpine
 
 WORKDIR /app
 
@@ -10,3 +10,5 @@ ENV URL https://dev-852100-admin.okta.com
 ENV API_TOKEN 00qvr3UjiKWzTKyHUBpSiFN3kYmnExBSN6gei1FO8M
 
 RUN npm install
+
+CMD [ "npm run deploy" ]
