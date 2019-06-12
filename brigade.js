@@ -59,7 +59,7 @@ events.on("push", async (e, project) => {
       // "helm init --history-max 200",
       "helm ls",
       "helm repo add usc https://successive-dev.github.io/usc/",
-      "helm upgrade --set image.tag=$version usc usc/user-service",  
+      "helm upgrade --set image.tag=$version usc usc/user-service",   
     ];
     if(e.type == 'push'){
       if(jsonPayload.ref == "refs/heads/master") {
