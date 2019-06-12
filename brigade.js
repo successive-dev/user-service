@@ -54,6 +54,7 @@ events.on("push", async (e, project) => {
       "rm key.json",
       "apk add npm",
       "npm install",
+      "npm i nodemon",
       "npm start",
       "docker build -t user-service .",
       "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
