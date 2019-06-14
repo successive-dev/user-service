@@ -39,7 +39,7 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
-      "echo project" + project.secrets,
+      "echo project" + project.secrets.type,
 
       // get version of repo
       // "git fetch --tags -q",
