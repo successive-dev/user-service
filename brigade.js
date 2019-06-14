@@ -23,7 +23,7 @@ events.on("push", async (e, project) => {
     // let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/platform");
     // j1.storage.enabled = true;
-    // j2.storage.enabled = true;
+    j2.storage.enabled = true;
     j2.privileged = true;
     j2.env = { 
       DOCKER_DRIVER: "overlay",
