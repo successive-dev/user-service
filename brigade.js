@@ -3,8 +3,8 @@ const { events, Job } = require("brigadier");
 
 events.on("push", async (e, project) => {
   try {
-    console.log("================================", e, "================================");
-    console.log("================================", project, "================================");
+    // console.log("================================", e, "================================");
+    // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
     const keys = {
       type : project.secrets.type,
@@ -39,6 +39,7 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
+      "echo project" + project.secrets,
 
       // get version of repo
       // "git fetch --tags -q",
