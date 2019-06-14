@@ -20,19 +20,22 @@ events.on("push", async (e, project) => {
     }
     // console.log(keys);
     const keys_stringified = JSON.stringify(keys);
-    // let j1 = new Job("lint-check", "node");
+    let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/platform");
+    j1.storage.enabled = true;
+    j2.storage.enabled = true;
     j2.privileged = true;
     j2.env = { 
       DOCKER_DRIVER: "overlay",
       KEY: keys_stringified,
     }
-    // j1.tasks = [
-    //   "cd /src",
-    //   "apt install python",
-    //   "npm i",
-    //   "npm run lint:fix",    
-    // ];
+    j1.tasks = [
+      "cd /mnt/brigade/share",
+      "echo hello_world > hello_world.txt",
+      // "apt install python",
+      // "npm i",
+      // "npm run lint:fix",    
+    ];
     j2.tasks = [
 
       // init
@@ -40,6 +43,8 @@ events.on("push", async (e, project) => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
       "echo project" + project.secrets.type,
+      "cd /mnt/brigade/share",
+      "cat hello_world.txt",
 
       // get version of repo
       // "git fetch --tags -q",
