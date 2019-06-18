@@ -31,7 +31,7 @@ events.on("push", async (e, project) => {
     }
     j1.tasks = [
       "cd /mnt/brigade/share",
-      "echo hello_world_whats_sup > hello_world.txt",
+      "echo hello_world_whats > hello_world.txt",
       // "apt install python",
       // "npm i",
       // "npm run lint:fix",    
