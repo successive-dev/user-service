@@ -21,6 +21,7 @@ events.on("push", async (e, project) => {
     }
     // console.log(keys);
     const keys_stringified = JSON.stringify(keys);
+    let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/platform");
     j1.storage.enabled = true;
     j2.storage.enabled = true;
@@ -42,7 +43,7 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
-      // "echo ================secrets===================  " + project.secrets,
+      "echo ================secrets===================  " + project.secrets,
       "cd /mnt/brigade/share",
       "cat hello_world.txt",
 
