@@ -42,7 +42,7 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
-      "echo ================secrets===================  " + project.secrets,
+      // "echo ================secrets===================  " + project.secrets,
       "cd /mnt/brigade/share",
       "cat hello_world.txt",
 
