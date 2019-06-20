@@ -7,6 +7,7 @@ events.on("push", async (e, project) => {
     // console.log("================================", e, "================================");
     // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
+    console.log(project.secrets);
     const keys = {
       type : project.secrets.type,
       project_id : project.secrets.project_id,
