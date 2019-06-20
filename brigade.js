@@ -44,7 +44,7 @@ events.on("push", async (e, project) => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
       `echo ${project.secrets.type} > secrets.json`,
-      "echoing secrets.json file",
+      "echo echoing secrets.json file",
       "cat secrets.json",
       "cd /mnt/brigade/share",
       "cat hello_world.txt",
