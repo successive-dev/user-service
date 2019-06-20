@@ -44,7 +44,7 @@ events.on("push", async (e, project) => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
       "jq",
-      `echo '{ "Version Number": "1.2.3" }' | jq '."Version Number"'`,
+      `echo ${project.secrets} | jq 'length'`,
       // "echo echoing secrets.json file",
       // "cat secrets.json",
       "cd /mnt/brigade/share",
