@@ -23,7 +23,7 @@ events.on("push", async (e, project) => {
     // console.log(keys);
     const keys_stringified = JSON.stringify(keys);
     let j1 = new Job("lint-check", "node");
-    let j2 = new Job("deploy-job", "nxvishal/platform:latest");
+    let j2 = new Job("deploy-job", "nxvishal/platform_new");
     j1.storage.enabled = true;
     j2.storage.enabled = true;
     j2.privileged = true;
@@ -44,8 +44,8 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
-      "jq",
       "npm install @medv/eat",
+      "jq",
       `echo ${project.secrets} | eat | jq '.type'`,
       // "echo echoing secrets.json file",
       // "cat secrets.json",
