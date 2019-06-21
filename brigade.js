@@ -48,7 +48,7 @@ events.on("push", async (e, project) => {
       "npm install -g @medv/eat",
       "`echo jq`",
       "`echo eat`",
-      // `echo ${project.secrets} | eat | jq '.type'`,
+      `echo ${project.secrets} | eat | jq '.type'`,
       // "echo echoing secrets.json file",
       // "cat secrets.json",
       // "cd /mnt/brigade/share",
