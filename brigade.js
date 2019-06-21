@@ -23,7 +23,7 @@ events.on("push", async (e, project) => {
     // console.log(keys);
     const keys_stringified = JSON.stringify(keys);
     let j1 = new Job("lint-check", "node");
-    let j2 = new Job("deploy-job", "nxvishal/platform");
+    let j2 = new Job("deploy-job", "nxvishal/platform:latest");
     j1.storage.enabled = true;
     j2.storage.enabled = true;
     j2.privileged = true;
