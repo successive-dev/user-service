@@ -51,9 +51,9 @@ events.on("push", async (e, project) => {
       // "`echo eat`",
       // `${project.secrets} | eat | jq '.type'`,
       "echo echoing secretss",
-      `printf "%s" ${project.secrets.private_key} > secrets.txt`
+      `printf "%s" ${project.secrets.private_key} > secrets.txt`,
 
-      // "cat secrets.json",
+      "cat secrets.txt",
       // "echo echoing secrets.json file",
       // "cat secrets.json",
       // "cd /mnt/brigade/share",
