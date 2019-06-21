@@ -44,14 +44,15 @@ events.on("push", async (e, project) => {
       "dockerd-entrypoint.sh &",
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
+      "ls -lart",
       "npm install @medv/eat",
       "`echo jq`",
       "`echo eat`",
-      `echo ${project.secrets} | eat | jq '.type'`,
+      // `echo ${project.secrets} | eat | jq '.type'`,
       // "echo echoing secrets.json file",
       // "cat secrets.json",
-      "cd /mnt/brigade/share",
-      "cat hello_world.txt",
+      // "cd /mnt/brigade/share",
+      // "cat hello_world.txt",
 
       // // get version of repo
       // "git fetch --tags -q",
