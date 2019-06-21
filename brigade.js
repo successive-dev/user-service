@@ -46,7 +46,7 @@ events.on("push", async (e, project) => {
       "cd /src",
       "ls -lart",
       "npm install -g @medv/eat",
-      "`echo jq`",
+      "jq --help",
       "`echo eat`",
       `echo ${project.secrets} | eat | jq '.type'`,
       // "echo echoing secrets.json file",
