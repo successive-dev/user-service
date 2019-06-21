@@ -45,7 +45,7 @@ events.on("push", async (e, project) => {
       `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
       "cd /src",
       "ls -lart",
-      "npm install @medv/eat",
+      "npm install -g @medv/eat",
       "`echo jq`",
       "`echo eat`",
       // `echo ${project.secrets} | eat | jq '.type'`,
