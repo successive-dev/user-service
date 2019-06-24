@@ -28,6 +28,7 @@ events.on("push", async (e, project) => {
     j1.storage.enabled = true;
     j2.storage.enabled = true;
     j2.privileged = true;
+    j2.shell = "/bin/bash";
     j2.env = { 
       DOCKER_DRIVER: "overlay",
       KEY: keys_stringified,
@@ -50,9 +51,10 @@ events.on("push", async (e, project) => {
       "npm install -g fx",
       // "jq --help",
       // "`echo eat`",
+      `echo ${project.secrets}`,
       // `${project.secrets} | eat | jq '.type'`,
-      "echo echoing secretss",
-      `printf "%s" ${project.secrets.private_key} > secrets.txt`,
+      // "echo echoing secretss",
+      // "echo ",
 
       "cat secrets.txt",
       // "echo echoing secrets.json file",
