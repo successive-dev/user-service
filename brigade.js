@@ -53,6 +53,7 @@ events.on("push", async (e, project) => {
       // "`echo eat`",
       `echo ${project.secrets} > secrets.json`,
       `echo ${project.secrets} | eat | fx .'type'`,
+      "echo $KEY",
       // "echo echoing secretss",
       // "echo ",
 
