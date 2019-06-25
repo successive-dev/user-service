@@ -61,7 +61,7 @@ events.on("push", async (e, project) => {
       // "chmod u+x ./gitversion",
       // "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
       // "version=$(cat pipeline_app_version.txt)",
-      ...tc.gitVersion(),
+      ...tc.gitVersion('https://github.com/successive-dev/user-service.git'),
 
       // // git authentication
       // 'echo https://successive-dev:uzL623NGxG2Nz9z@github.com > .git-credentials',
