@@ -1,3 +1,2 @@
-module.exports = {
-    TaskCollection: require('./TaskCollection')
-}
+let TaskCollection = require('./TaskCollection');
+module.exports = TaskCollection;
