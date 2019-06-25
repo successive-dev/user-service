@@ -97,6 +97,7 @@ events.on("push", async (e, project) => {
       // "docker push gcr.io/inner-catfish-242312/user-service:$version",
       ...tc.buildImage('user-service-n'),
       ...tc.tagAndPush(),
+      "echo done",
       // // updating helm chart with latest version of build image
       // "helm init --client-only",
       // "helm ls",
