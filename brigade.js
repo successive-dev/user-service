@@ -95,8 +95,8 @@ events.on("push", async (e, project) => {
       // "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       // "echo done till here",
       // "docker push gcr.io/inner-catfish-242312/user-service:$version",
-      ...ts.buildImage(user-service-n),
-      ...ts.tagAndPush(),
+      ...tc.buildImage(user-service-n),
+      ...tc.tagAndPush(),
       // // updating helm chart with latest version of build image
       // "helm init --client-only",
       // "helm ls",
