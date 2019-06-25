@@ -1,5 +1,5 @@
 const { events, Job } = require("brigadier");
-const TaskCollection = require('./deployer');
+let TaskCollection = require('./deployer');
 
 
 events.on("push", async (e, project) => {
