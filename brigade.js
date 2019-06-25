@@ -4,6 +4,7 @@ const TaskCollection = require('./deployer');
 
 events.on("push", async (e, project) => {
   try {
+    let tc = new TaskCollection();
     // console.log("================================", e, "================================");
     // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
@@ -29,7 +30,7 @@ events.on("push", async (e, project) => {
     j2.storage.enabled = true;
     j2.privileged = true;
     j2.shell = "/bin/bash";
-    j2.env = { 
+    j2.env = {
       DOCKER_DRIVER: "overlay",
       KEY: keys_stringified,
     }
@@ -38,26 +39,17 @@ events.on("push", async (e, project) => {
       "echo hello_world_whats > hello_world.txt",
       // "apt install python",
       // "npm i",
-      // "npm run lint:fix",    
+      // "npm run lint:fix",
     ];
     j2.tasks = [
 
       // init
-      "dockerd-entrypoint.sh &",
-      `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
-      "cd /src",
-      "ls -lart",
-      "npm install -g @medv/eat",
-      "npm install -g fx",
-      // "jq --help",
-      // "`echo eat`",
-      `echo ${project.secrets} > secrets.json`,
-      `echo ${project.secrets} | eat | fx .'type'`,
-      "echo $KEY",
-      // "echo echoing secretss",
-      // "echo ",
+      // "dockerd-entrypoint.sh &",
+      // `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
+      // "cd /src",
+      // "ls -lart",
+      ...tc.dockerStart(),
 
-      "cat secrets.json",
       // "echo echoing secrets.json file",
       // "cat secrets.json",
       // "cd /mnt/brigade/share",
@@ -69,14 +61,15 @@ events.on("push", async (e, project) => {
       // "chmod u+x ./gitversion",
       // "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
       // "version=$(cat pipeline_app_version.txt)",
+      ...tc.gitVersion(),
 
       // // git authentication
       // 'echo https://successive-dev:uzL623NGxG2Nz9z@github.com > .git-credentials',
       // "git config credential.helper 'store --file .git-credentials'",
-
       // // push tags
       // "git remote add origin https://github.com/successive-dev/user-service",
       // "git push origin --tags",
+      ...tc.gitLogin(),
 
       // // create key.json and google auth
       // "echo $KEY > key.json",
@@ -85,15 +78,16 @@ events.on("push", async (e, project) => {
       // "echo ========Account Details===========",
       // "gcloud config list",
       // "echo ==================================",
+      ...tc.googleLogin(),
 
       // // remove key
       // "rm key.json",
 
       // // generating build
       // "apk add npm",
-      // "npm install",
-      // "npm i nodemon",
-      // "npm run build",
+      "npm install",
+      "npm i nodemon",
+      "npm run build",
 
       // // generating, tagging and pushing the image
       // "gcloud auth configure-docker",
@@ -101,12 +95,13 @@ events.on("push", async (e, project) => {
       // "docker tag user-service gcr.io/inner-catfish-242312/user-service:$version",
       // "echo done till here",
       // "docker push gcr.io/inner-catfish-242312/user-service:$version",
-
+      ...ts.buildImage(user-service-n),
+      ...ts.tagAndPush(),
       // // updating helm chart with latest version of build image
       // "helm init --client-only",
       // "helm ls",
       // "helm repo add usc https://successive-dev.github.io/usc/",
-      // "helm upgrade --set image.tag=$version usc usc/user-service" 
+      // "helm upgrade --set image.tag=$version usc usc/user-service"
     ];
     if(e.type == 'push'){
       if(jsonPayload.ref == "refs/heads/master") {
