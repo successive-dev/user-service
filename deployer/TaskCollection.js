@@ -20,18 +20,14 @@ class TaskCollection {
 		]
 	};
 
-	gitVersion(repo) {
+	gitVersion() {
 		// repo is github repository
-    if(repo == undefined) {
-      new Error('Repo cant be undefined');
-    }
-
-		return [
+    return [
 			"git fetch --tags -q",
 			"wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
 			"chmod u+x ./gitversion",
 			"./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
-			`git remote add origin ${repo}`,
+			`git remote add origin ${this.project.repo.cloneURL}`,
       "git push origin --tags",
 		]
 	}
