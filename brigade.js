@@ -5,8 +5,8 @@ let TaskCollection = require('./deployer');
 events.on("push", async (e, project) => {
   try {
     let tc = new TaskCollection(e, project);
-    // console.log("================================", e, "================================");
-    // console.log("================================", project, "================================");
+    console.log("================================", e, "================================");
+    console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
     console.log(typeof(project.secrets));
     console.log(project.secrets);
@@ -61,6 +61,7 @@ events.on("push", async (e, project) => {
       // "chmod u+x ./gitversion",
       // "./gitversion  bump auto && ./gitversion show > pipeline_app_version.txt",
       // "version=$(cat pipeline_app_version.txt)",
+      ...tc.gitLogin(),
       ...tc.gitVersion('https://github.com/successive-dev/user-service.git'),
 
       // // git authentication
@@ -69,7 +70,6 @@ events.on("push", async (e, project) => {
       // // push tags
       // "git remote add origin https://github.com/successive-dev/user-service",
       // "git push origin --tags",
-      ...tc.gitLogin(),
 
       // // create key.json and google auth
       // "echo $KEY > key.json",

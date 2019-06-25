@@ -22,6 +22,10 @@ class TaskCollection {
 
 	gitVersion(repo) {
 		// repo is github repository
+    if(repo == undefined) {
+      new Error('Repo cant be undefined');
+    }
+
 		return [
 			"git fetch --tags -q",
 			"wget -q -O gitversion https://github.com/screwdriver-cd/gitversion/releases/download/v1.1.1/gitversion_linux_amd64",
