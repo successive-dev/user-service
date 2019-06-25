@@ -4,7 +4,7 @@ const TaskCollection = require('./deployer');
 
 events.on("push", async (e, project) => {
   try {
-    let tc = new TaskCollection();
+    let tc = new TaskCollection(e, project);
     // console.log("================================", e, "================================");
     // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
