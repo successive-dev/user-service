@@ -44,11 +44,11 @@ events.on("push", async (e, project) => {
     j2.tasks = [
 
       // init
+      ...tc.dockerStart(),
       // "dockerd-entrypoint.sh &",
       // `printf "waiting for docker daemon"; while ! docker info >/dev/null 2>&1; do printf .; sleep 1; done; echo`,
-      // "cd /src",
+      "cd /src",
       // "ls -lart",
-      ...tc.dockerStart(),
 
       // "echo echoing secrets.json file",
       // "cat secrets.json",
