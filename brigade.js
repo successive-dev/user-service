@@ -43,7 +43,7 @@ events.on("push", async (e, project) => {
       "echo done",
       ...tc.helmInit(),
       ...tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
-      ...tc.helmUpgrade('usc', 'usc/user-service', values)
+      tc.helmUpgrade('usc', 'usc/user-service', values)
     ];
 
     console.log(pipeline);
@@ -89,8 +89,8 @@ events.on("push", async (e, project) => {
     ];
     if (e.type == 'push') {
       if (jsonPayload.ref == "refs/heads/master") {
-        await j1.run();
-        await j2.run();
+        // await j1.run();
+        // await j2.run();
       }
     }
   } catch (e) {
