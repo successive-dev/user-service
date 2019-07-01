@@ -62,7 +62,7 @@ class TaskCollection {
       "version=$(cat pipeline_app_version.txt)",
 			`docker tag ${this.imgName} gcr.io/inner-catfish-242312/${tag}:$version`,
 			`docker push gcr.io/inner-catfish-242312/${tag}:$version`,
-		]
+		].join("\n");
 	}
 
   pass() {
