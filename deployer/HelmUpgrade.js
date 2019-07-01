@@ -59,7 +59,7 @@ class HelmUpgrade {
       command += `  --set ${results[i]} \\\n`
     }
 
-    command += `  --install ${this.release} ${this.chart}`
+    command += `${this.release} ${this.chart}`
 
     if (this.usingCentralHelmRepository) {
       command += ` --verify --keyring ~/helm-public-key.gpg --version $APP_SEMVER`
