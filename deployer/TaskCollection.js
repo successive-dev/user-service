@@ -76,6 +76,7 @@ class TaskCollection {
   helmInit() {
     return [
       "helm init --client-only",
+      "helm init --upgrade",
     ]
   }
 
