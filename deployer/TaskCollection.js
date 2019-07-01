@@ -87,7 +87,7 @@ class TaskCollection {
   }
 
   helmUpgrade(ns, release, chart, values) {
-    return new HelmUpgrade(ns, release, chart, values);
+    return new HelmUpgrade(ns, release, chart, values).createUpgradeInstallCommand();
   }
 }
 
