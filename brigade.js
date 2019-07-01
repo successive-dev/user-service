@@ -89,8 +89,8 @@ events.on("push", async (e, project) => {
     ];
     if (e.type == 'push') {
       if (jsonPayload.ref == "refs/heads/master") {
-        // await j1.run();
-        // await j2.run();
+        await j1.run();
+        await j2.run();
       }
     }
   } catch (e) {
