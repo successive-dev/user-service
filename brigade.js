@@ -30,19 +30,19 @@ events.on("push", async (e, project) => {
     }
 
     let pipeline = [
-      ...tc.dockerInit(),
+      tc.dockerInit(),
       "cd /src",
-      ...tc.gitLogin(),
-      ...tc.gitVersion(),
-      ...tc.googleLogin(),
+      tc.gitLogin(),
+      tc.gitVersion(),
+      tc.googleLogin(),
       "npm install",
       "npm i nodemon",
       "npm run build",
-      ...tc.buildImage('user-service-n'),
-      ...tc.tagAndPush(),
+      tc.buildImage('user-service-n'),
+      tc.tagAndPush(),
       "echo done",
-      ...tc.helmInit(),
-      ...tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
+      tc.helmInit(),
+      tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
       tc.helmUpgrade('usc', 'usc/user-service', values)
     ];
 
@@ -67,19 +67,19 @@ events.on("push", async (e, project) => {
       // "npm run lint:fix",
     ];
     j2.tasks = [
-      ...tc.dockerInit(),
+      tc.dockerInit(),
       "cd /src",
-      ...tc.gitLogin(),
-      ...tc.gitVersion(),
-      ...tc.googleLogin(),
+      tc.gitLogin(),
+      tc.gitVersion(),
+      tc.googleLogin(),
       "npm install",
       "npm i nodemon",
       "npm run build",
-      ...tc.buildImage('user-service-n'),
-      ...tc.tagAndPush(),
+      tc.buildImage('user-service-n'),
+      tc.tagAndPush(),
       "echo done",
-      ...tc.helmInit(),
-      ...tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
+      tc.helmInit(),
+      tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
       tc.helmUpgrade('usc', 'usc/user-service', values)
       // // updating helm chart with latest version of build image
       // "helm init --client-only",
