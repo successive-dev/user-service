@@ -80,7 +80,7 @@ events.on("push", async (e, project) => {
       "echo done",
       ...tc.helmInit(),
       ...tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
-      tc.helmUpgrade('usc', 'usc/user-service', values)
+      tc.helmUpgrade('usc', 'usc/user-service', values),
       // // updating helm chart with latest version of build image
       // "helm init --client-only",
       // "helm ls",
