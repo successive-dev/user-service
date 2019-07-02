@@ -65,6 +65,9 @@ events.on("push", async (e, project) => {
     j1.tasks = [
       "cd /mnt/brigade/share",
       "echo hello_world_whats > hello_world.txt",
+      `echo ${project.secrets.key}`,
+      `echo ${project.secrets.key} > key.json`,
+      "echo key.json"
       // "apt install python",
       // "npm i",
       // "npm run lint:fix",
@@ -93,7 +96,7 @@ events.on("push", async (e, project) => {
     if (e.type == 'push') {
       if (jsonPayload.ref == "refs/heads/master") {
         await j1.run();
-        await j2.run();
+        // await j2.run();
       }
     }
   } catch (e) {
