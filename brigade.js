@@ -32,6 +32,7 @@ events.on("push", async (e, project) => {
     }
 
     let pipeline = [
+      `echo ${project.secrets.key}`,
       tc.dockerInit(),
       "cd /src",
       tc.gitLogin(),
