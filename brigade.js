@@ -24,7 +24,7 @@ events.on("push", async (e, project) => {
     }
 
     const values = {
-      port: 9000,
+      port: 9001,
       image: {
         repository: 'gcr.io/inner-catfish-242312/user-service-n',
         tag: '$version',
