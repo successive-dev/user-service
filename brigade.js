@@ -61,7 +61,7 @@ events.on("push", async (e, project) => {
     j2.shell = "/bin/bash";
     j2.env = {
       DOCKER_DRIVER: "overlay",
-      KEY: keys_stringified,
+      KEY: project.secrets.key,
     }
     j1.tasks = [
       "cd /mnt/brigade/share",
