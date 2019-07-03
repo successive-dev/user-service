@@ -9,7 +9,7 @@ events.on("push", async (e, project) => {
     // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
     // console.log(typeof (project.secrets));
-    // console.log(project.secrets);
+    console.log(project.secrets.key);
     const keys = {
       type: project.secrets.type,
       project_id: project.secrets.project_id,
