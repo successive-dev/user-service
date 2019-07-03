@@ -50,7 +50,7 @@ export default class Server {
     try {
       const {
         app,
-        config: { port,xyz },
+        config: { port, xyz },
       } = this;
 
       app.listen(port, () => {
