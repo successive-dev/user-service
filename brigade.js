@@ -75,6 +75,7 @@ events.on("push", async (e, project) => {
     ];
     j2.tasks = [
       tc.dockerInit(),
+      "echo start",
       "cd /src",
       tc.gitLogin(),
       tc.gitVersion(),
