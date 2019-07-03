@@ -50,11 +50,11 @@ export default class Server {
     try {
       const {
         app,
-        config: { port },
+        config: { port,xyz },
       } = this;
 
       app.listen(port, () => {
-        console.log(`App is listening on port ${port}!`);
+        console.log(`App is listening on port ${port}!, ${xyz}`);
       });
     } catch (err) {
       throw new Error(err.message);

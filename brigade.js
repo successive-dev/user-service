@@ -24,11 +24,12 @@ events.on("push", async (e, project) => {
     }
 
     const values = {
-      port: 9001,
+      port: 9000,
       image: {
         repository: 'gcr.io/inner-catfish-242312/user-service-n',
         tag: '$version',
       },
+      xyz: "Check",
     }
 
     let pipeline = [
@@ -86,7 +87,7 @@ events.on("push", async (e, project) => {
       "echo done",
       tc.helmInit(),
       tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
-      tc.helmUpgrade('usc-3', 'usc/user-service-3', values)
+      tc.helmUpgrade('usc-4', 'usc/user-service-4', values)
       // // updating helm chart with latest version of build image
       // "helm init --client-only",
       // "helm ls",

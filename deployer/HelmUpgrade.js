@@ -56,7 +56,7 @@ class HelmUpgrade {
     this.flatten(this.values, '', results, checkPropertyDefined);
 
     for (var i in results) {
-      command += `  --set ${results[i]} \\\n`
+      command += `--install  --set ${results[i]} \\\n`
     }
 
     command += `${this.release} ${this.chart}`

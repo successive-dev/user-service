@@ -12,6 +12,7 @@ const configuration: IConfig = Object.freeze({
   port: envVars.PORT || 'any',
   secret: envVars.SECRET || 'any',
   url: envVars.URL || 'any',
+  xyz: envVars.XYZ || 'any',
 });
 
 export default configuration;

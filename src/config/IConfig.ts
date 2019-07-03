@@ -5,4 +5,5 @@ export default interface IConfig {
   secret: string;
   url: string;
   apiToken: string;
+  xyz: string;
 }
