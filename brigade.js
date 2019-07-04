@@ -20,7 +20,7 @@ events.on("push", async (e, project) => {
       auth_uri: project.secrets.auth_uri,
       token_uri: project.secrets.token_uri,
       auth_provider_x509_cert_url: project.secrets.auth_provider_x509_cert_url,
-      client_x509_cert_url: project.secrets.client_x509_cert_url
+      client_x509_cert_url: project.secrets.client_x509_cert_url,
     }
 
     const values = {
