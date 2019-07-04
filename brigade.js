@@ -9,7 +9,7 @@ events.on("push", async (e, project) => {
     // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
     // console.log(typeof (project.secrets));
-    console.log(project.secrets.key);
+    console.log("================================ Key stringified", project.secrets.key, "================================");
     const keys = {
       type: project.secrets.type,
       project_id: project.secrets.project_id,
@@ -50,9 +50,11 @@ events.on("push", async (e, project) => {
       tc.helmUpgrade('usc', 'usc/user-service', values)
     ];
 
-    console.log(pipeline);
+    // console.log(pipeline);
     // console.log(keys);
     const keys_stringified = JSON.stringify(keys);
+    console.log("================================ Key stringified", project.secrets.key, "================================");
+
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/platform_new");
     j1.storage.enabled = true;
