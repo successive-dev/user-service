@@ -47,7 +47,7 @@ events.on("push", async (e, project) => {
       "echo done",
       tc.helmInit(),
       tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
-      tc.helmUpgrade('usc', 'usc/user-service', values)
+      tc.helmUpgrade('usc', 'usc/user-service', values),
     ];
 
     // console.log(pipeline);
