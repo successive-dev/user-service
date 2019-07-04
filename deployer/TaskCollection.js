@@ -38,7 +38,7 @@ class TaskCollection {
     // environment variable KEY
     return [
       // "echo $KEY > key.json",
-      `echo {${this.project.secrets.key}} > key.json`,
+      `echo ${this.project.secrets.key} > key.json`,
       `cat key.json`,
       "gcloud auth activate-service-account --key-file key.json",
       "gcloud config set project inner-catfish-242312",
