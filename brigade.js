@@ -53,7 +53,7 @@ events.on("push", async (e, project) => {
     // console.log(pipeline);
     // console.log(keys);
     const keys_stringified = JSON.stringify(keys);
-    console.log("================================ Key stringified", project.secrets.key, "================================");
+    console.log("================================ Keys combined and stringified", keys_stringified, "================================");
 
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/platform_new");
