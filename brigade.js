@@ -5,23 +5,7 @@ let TaskCollection = require('./deployer');
 events.on("push", async (e, project) => {
   try {
     let tc = new TaskCollection(e, project);
-    // console.log("================================", e, "================================");
-    // console.log("================================", project, "================================");
     var jsonPayload = JSON.parse(e.payload);
-    // console.log(typeof (project.secrets));
-    console.log("================================ Key stringified", project.secrets.key, "================================");
-    const keys = {
-      type: project.secrets.type,
-      project_id: project.secrets.project_id,
-      private_key_id: project.secrets.private_key_id,
-      private_key: project.secrets.private_key,
-      client_email: project.secrets.client_email,
-      client_id: project.secrets.client_id,
-      auth_uri: project.secrets.auth_uri,
-      token_uri: project.secrets.token_uri,
-      auth_provider_x509_cert_url: project.secrets.auth_provider_x509_cert_url,
-      client_x509_cert_url: project.secrets.client_x509_cert_url,
-    }
 
     const values = {
       port: 9000,
@@ -50,11 +34,6 @@ events.on("push", async (e, project) => {
       tc.helmUpgrade('usc', 'usc/user-service', values),
     ];
 
-    // console.log(pipeline);
-    // console.log(keys);
-    const keys_stringified = JSON.stringify(keys);
-    console.log("================================ Keys combined and stringified", keys_stringified, "================================");
-
     let j1 = new Job("lint-check", "node");
     let j2 = new Job("deploy-job", "nxvishal/platform_new");
     j1.storage.enabled = true;
@@ -66,11 +45,11 @@ events.on("push", async (e, project) => {
       KEY: project.secrets.key,
     }
     j1.tasks = [
-      "cd /mnt/brigade/share",
-      "echo hello_world_whats > hello_world.txt",
-      `echo ${project.secrets.key}`,
-      `echo ${project.secrets.key} > key.json`,
-      "echo key.json"
+      // "cd /mnt/brigade/share",
+      // "echo hello_world_whats > hello_world.txt",
+      // `echo ${project.secrets.key}`,
+      // `echo ${project.secrets.key} > key.json`,
+      // "echo key.json"
       // "apt install python",
       // "npm i",
       // "npm run lint:fix",
@@ -85,18 +64,12 @@ events.on("push", async (e, project) => {
       "npm install",
       "npm i nodemon",
       "npm run build",
-      // tc.buildImage('user-service-n'),
-      // tc.tagAndPush(),
-      // "echo done",
-      // tc.helmInit(),
-      // tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
-      // tc.helmUpgrade('usc-4', 'usc/user-service-4', values),
-
-      // // updating helm chart with latest version of build image
-      // "helm init --client-only",
-      // "helm ls",
-      // "helm repo add usc https://successive-dev.github.io/usc/",
-      // "helm upgrade --set image.tag=$version usc usc/user-service"
+      tc.buildImage('user-service-n'),
+      tc.tagAndPush(),
+      "echo done",
+      tc.helmInit(),
+      tc.helmAddRepo('https://successive-dev.github.io/usc/', 'usc'),
+      tc.helmUpgrade('usc-4', 'usc/user-service-4', values),
     ];
     if (e.type == 'push') {
       if (jsonPayload.ref == "refs/heads/master") {

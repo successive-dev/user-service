@@ -5,3 +5,4 @@ dist
 .env
 .editorconfig
 .git-credentials
+test.js
