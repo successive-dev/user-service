@@ -11,7 +11,7 @@ docker.env = {
 docker.tasks = [
   "dockerd-entrypoint.sh &",
   `sleep 30`,
-  // "docker info",
+  "docker info",
   // "cd /src",
   // "apk add curl",
   // "VERSION=1.5.0",
