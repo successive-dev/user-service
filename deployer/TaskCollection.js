@@ -34,14 +34,12 @@ class TaskCollection {
   }
 
   googleLogin() {
-    // Assuming that keys are fetched from project.secrets, stringified and passed as
-    // environment variable KEY
     return [
       "echo $KEY > key.json",
       // `echo ${this.project.secrets.key} > key.json`,
-      `cat key.json`,
+      // `cat key.json`,
       "gcloud auth activate-service-account --key-file key.json",
-      "gcloud config set project inner-catfish-242312",
+      // "gcloud config set project inner-catfish-242312",
     ].join("\n");
   }
 
